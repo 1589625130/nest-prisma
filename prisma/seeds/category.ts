@@ -1,4 +1,13 @@
 import { PrismaClient } from '@prisma/client';
+import { Random } from 'mockjs';
+import { create } from '../helper';
 
-const prisma = new PrismaClient();
-async function createCategory() {}
+export async function addCategory() {
+  await create(10, async (prisma: PrismaClient) => {
+    await prisma.category.create({
+      data: {
+        title: Random.ctitle(),
+      },
+    });
+  });
+}
