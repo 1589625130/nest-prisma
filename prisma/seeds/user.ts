@@ -2,10 +2,8 @@ import { PrismaClient } from '@prisma/client';
 import { Random } from 'mockjs';
 import { create } from '../helper';
 
-const prisma = new PrismaClient();
-
 export async function createUser() {
-  create(300, async (prisma: PrismaClient) => {
+  await create(300, async (prisma: PrismaClient) => {
     await prisma.user.create({
       data: {
         email: Random.email(),
